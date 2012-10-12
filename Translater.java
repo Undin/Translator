@@ -1,4 +1,4 @@
-package ru.ivansamborskiy.translateenru;
+package ru.sixteenfourteen.translater;
 
 import java.io.BufferedReader;
 import java.io.IOException;
