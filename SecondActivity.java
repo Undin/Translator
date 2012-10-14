@@ -80,76 +80,69 @@ public class SecondActivity extends Activity {
 		String url, fun = "http://airs-design.ru/meme/imgs/efdf2591.jpeg";
 		// get images function request
 //		String urls[] = new String[10];
-		String urls[] = new PicturesFinder().getURLs(engWord, 10);
+//		String urls[] = new PicturesFinder().getURLs(engWord, 10);
 
+		PicturesFinder finder = new PicturesFinder();
+		finder.setTranslatingWord(engWord);
+		
 		imgView = (ImageView) findViewById(R.id.img0);
-		if (urls[0] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[0];
 		new DownloadImageTask(imgView).execute(url);
 
 		imgView = (ImageView) findViewById(R.id.img1);
-		if (urls[1] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[1];
 		new DownloadImageTask(imgView).execute(url);
 
 		imgView = (ImageView) findViewById(R.id.img2);
-		if (urls[2] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[2];
 		new DownloadImageTask(imgView).execute(url);
 
 		imgView = (ImageView) findViewById(R.id.img3);
-		if (urls[3] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[3];
 		new DownloadImageTask(imgView).execute(url);
 
 		imgView = (ImageView) findViewById(R.id.img4);
-		if (urls[4] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[4];
 		new DownloadImageTask(imgView).execute(url);
 
 		imgView = (ImageView) findViewById(R.id.img5);
-		if (urls[5] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[5];
 		new DownloadImageTask(imgView).execute(url);
 
 		imgView = (ImageView) findViewById(R.id.img6);
-		if (urls[6] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[6];
 		new DownloadImageTask(imgView).execute(url);
 
 		imgView = (ImageView) findViewById(R.id.img7);
-		if (urls[7] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[7];
 		new DownloadImageTask(imgView).execute(url);
 
 		imgView = (ImageView) findViewById(R.id.img8);
-		if (urls[8] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[8];
 		new DownloadImageTask(imgView).execute(url);
 
 		imgView = (ImageView) findViewById(R.id.img9);
-		if (urls[9] == null)
+		url = finder.nextURL();
+		if (url == null)
 			url = fun;
-		else
-			url = urls[9];
 		new DownloadImageTask(imgView).execute(url);
 	}
 }
