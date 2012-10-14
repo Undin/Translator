@@ -19,6 +19,8 @@ import android.widget.TextView;
 public class SecondActivity extends Activity {
 	Context context;
 	private ImageView imgView;
+	PicturesFinder finder = new PicturesFinder();
+	String url, fun = "http://airs-design.ru/meme/imgs/efdf2591.jpeg";
 
 	@Override
 	public void onBackPressed() {
@@ -44,6 +46,10 @@ public class SecondActivity extends Activity {
 			} catch (Exception e) {
 				Log.e("Error", e.getMessage());
 				e.printStackTrace();
+				picSet(bmImage);
+			}
+			if (mIcon11 == null) {
+				picSet(bmImage);
 			}
 			return mIcon11;
 		}
@@ -53,6 +59,13 @@ public class SecondActivity extends Activity {
 		}
 	}
 
+	public void picSet (ImageView tmpPic){
+		url = finder.nextURL();
+		if (url == null)
+			url = fun;
+		new DownloadImageTask(tmpPic).execute(url);
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,7 +74,7 @@ public class SecondActivity extends Activity {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
-		
+
 		// Translation
 		String engWord = getIntent().getExtras().getString("engWord");
 		String ruWord = engWord;
@@ -77,72 +90,40 @@ public class SecondActivity extends Activity {
 		rusWord.setText(ruWord);
 
 		// image from URL
-		String url, fun = "http://airs-design.ru/meme/imgs/efdf2591.jpeg";
 		// get images function request
-//		String urls[] = new String[10];
-//		String urls[] = new PicturesFinder().getURLs(engWord, 10);
+		// String urls[] = new String[10];
+		// String urls[] = new PicturesFinder().getURLs(engWord, 10);
 
-		PicturesFinder finder = new PicturesFinder();
 		finder.setTranslatingWord(engWord);
-		
+
 		imgView = (ImageView) findViewById(R.id.img0);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 
 		imgView = (ImageView) findViewById(R.id.img1);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 
 		imgView = (ImageView) findViewById(R.id.img2);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 
 		imgView = (ImageView) findViewById(R.id.img3);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 
 		imgView = (ImageView) findViewById(R.id.img4);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 
 		imgView = (ImageView) findViewById(R.id.img5);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 
 		imgView = (ImageView) findViewById(R.id.img6);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 
 		imgView = (ImageView) findViewById(R.id.img7);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 
 		imgView = (ImageView) findViewById(R.id.img8);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 
 		imgView = (ImageView) findViewById(R.id.img9);
-		url = finder.nextURL();
-		if (url == null)
-			url = fun;
-		new DownloadImageTask(imgView).execute(url);
+		picSet(imgView);
 	}
 }
