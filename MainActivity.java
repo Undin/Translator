@@ -2,7 +2,9 @@
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,11 +20,27 @@ public class MainActivity extends Activity {
 	public boolean sec = false;
 
 	public static boolean isOneWord(String word) {
-		for (int i = 0; i < word.length(); i++){
-			if (word.charAt(i) < 'A' || word.charAt(i) > 'Z' && word.charAt(i) < 'a' || word.charAt(i) > 'z')
+		for (int i = 0; i < word.length(); i++) {
+			if (word.charAt(i) < 'A' || word.charAt(i) > 'Z'
+					&& word.charAt(i) < 'a' || word.charAt(i) > 'z')
 				return false;
 		}
 		return true;
+	}
+
+	@Override
+	public void onBackPressed() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Exit")
+				.setMessage("Do u wanna rly exit?")
+				.setCancelable(false)
+				.setPositiveButton("Yep",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								MainActivity.super.onBackPressed();
+							}
+						}).setNegativeButton("Nah", null);
+		builder.create().show();
 	}
 
 	@Override
@@ -45,7 +63,7 @@ public class MainActivity extends Activity {
 					TextView label = (TextView) findViewById(R.id.label1);
 					label.setText("ONLY ONE ENGLISH WORD ALLOWED!");
 					label.setTextColor(Color.RED);
-				}	
+				}
 			}
 		});
 	}
