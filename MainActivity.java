@@ -49,50 +49,40 @@ public class MainActivity extends Activity {
 		builder.create().show();
 	}
 
+	public void goNextWindow() {
+		TextView wordToTranslate = (TextView) findViewById(R.id.engWord);
+		if (isOneWord(wordToTranslate.getText().toString())) {
+			Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+			intent.putExtra("engWord", wordToTranslate.getText().toString());
+			startActivity(intent);
+			finish();
+		} else {
+			TextView label = (TextView) findViewById(R.id.label1);
+			label.setText("ONLY ONE ENGLISH WORD ALLOWED!");
+			label.setTextColor(Color.RED);
+		}
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		// Button click
-		
+
 		this.translateButton = (Button) this.findViewById(R.id.translateButton);
 		this.translateButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				TextView wordToTranslate = (TextView) findViewById(R.id.engWord);
-				if (isOneWord(wordToTranslate.getText().toString())) {
-					Intent intent = new Intent(MainActivity.this,
-							SecondActivity.class);
-					intent.putExtra("engWord", wordToTranslate.getText()
-							.toString());
-					startActivity(intent);
-					finish();
-				} else {
-					TextView label = (TextView) findViewById(R.id.label1);
-					label.setText("ONLY ONE ENGLISH WORD ALLOWED!");
-					label.setTextColor(Color.RED);
-				}
+				goNextWindow();
 			}
 		});
 		this.inputText = (EditText) this.findViewById(R.id.engWord);
 		this.inputText.setOnKeyListener(new OnKeyListener() {
-		
-			@Override 
+
+			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				if ((event.getAction() == KeyEvent.ACTION_DOWN)
 						&& (keyCode == KeyEvent.KEYCODE_ENTER)) {
-					TextView wordToTranslate = (TextView) findViewById(R.id.engWord);
-					if (isOneWord(wordToTranslate.getText().toString())) {
-						Intent intent = new Intent(MainActivity.this,
-								SecondActivity.class);
-						intent.putExtra("engWord", wordToTranslate.getText()
-								.toString());
-						startActivity(intent);
-						finish();
-					} else {
-						TextView label = (TextView) findViewById(R.id.label1);
-						label.setText("ONLY ONE ENGLISH WORD ALLOWED!");
-						label.setTextColor(Color.RED);
-					}
+					goNextWindow();
 					return true;
 				}
 				return false;
