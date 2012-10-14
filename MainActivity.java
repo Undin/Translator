@@ -1,4 +1,4 @@
-﻿package ru.sixteenfourteen.translater;
+﻿package ru.sixteenfourteen.translator;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

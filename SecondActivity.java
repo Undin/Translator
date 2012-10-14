@@ -1,4 +1,4 @@
-﻿package ru.sixteenfourteen.translater;
+﻿package ru.sixteenfourteen.translator;
 
 import java.io.InputStream;
 
@@ -81,7 +81,7 @@ public class SecondActivity extends Activity {
 		TextView initalWord = (TextView) findViewById(R.id.initalWord);
 		initalWord.setText(engWord);
 		try {
-			ruWord = new Translater().getTranslate(engWord);
+			ruWord = new Translator().getTranslate(engWord);
 		} catch (Exception e) {
 			e.printStackTrace();
 			ruWord = "Check your Internet connection";
