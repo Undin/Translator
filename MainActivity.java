@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class MainActivity extends Activity {
@@ -55,11 +55,9 @@ public class MainActivity extends Activity {
 			Intent intent = new Intent(MainActivity.this, SecondActivity.class);
 			intent.putExtra("engWord", wordToTranslate.getText().toString());
 			startActivity(intent);
-			finish();
+//			finish();
 		} else {
-			TextView label = (TextView) findViewById(R.id.label1);
-			label.setText("ONLY ONE ENGLISH WORD ALLOWED!");
-			label.setTextColor(Color.RED);
+			Toast.makeText(this, "Only one english word is allowed!", Toast.LENGTH_LONG).show();
 		}
 	}
 
