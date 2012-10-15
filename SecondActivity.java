@@ -5,13 +5,11 @@ import java.io.InputStream;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,13 +20,13 @@ public class SecondActivity extends Activity {
 	PicturesFinder finder = new PicturesFinder();
 	String url, fun = "http://airs-design.ru/meme/imgs/efdf2591.jpeg";
 
-	@Override
-	public void onBackPressed() {
-		Intent intent = new Intent(SecondActivity.this, MainActivity.class);
-		startActivity(intent);
-		finish();
-		return;
-	}
+//	@Override
+//	public void onBackPressed() {
+//		Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+//		startActivity(intent);
+//		finish();
+//		return;
+//	}
 
 	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 		ImageView bmImage;
@@ -44,8 +42,8 @@ public class SecondActivity extends Activity {
 				InputStream in = new java.net.URL(urldisplay).openStream();
 				mIcon11 = BitmapFactory.decodeStream(in);
 			} catch (Exception e) {
-				Log.e("Error", e.getMessage());
-				e.printStackTrace();
+//				Log.e("Error", e.getMessage());
+//				e.printStackTrace();
 				picSet(bmImage);
 			}
 			if (mIcon11 == null) {
